@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Udenszīmes pievienošana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9d6976f155.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" defer></script>
+    <script src="index.js" defer></script>
+    <script src="movableDiv.js" defer></script>
+    <script src="settings.js" defer></script>
+</head>
+<body id="body">
+    <nav>
+        <button class="previous-step btn" id="previous-step" onclick="previousStep()">PREVIOUS STEP</button>
+        <div class="logo">
+            <h1>WATERMARKER</h1>
+        </div>
+        <button class="next-step btn" id="next-step" onclick="nextStep()">NEXT STEP</button>
+    </nav>
+
+    <aside id="aside">
+        <div class="text-editor big-setting-container">
+            <input type="checkbox" id="text" name="type" value="text">
+            <label for="text" class="setting-container checkbox-label">Add text</label>
+
+            <div class="text-container setting-container">
+                <label for="textbox">Text:</label>
+                <input type="text" name="textbox" id="textbox" placeholder="Text goes here">
+            </div>
+
+            <div class="color-container setting-container">
+                <label for="color">Color:</label>
+                <input type="text" name="color" id="color" placeholder="HEX" maxlength="7">
+            </div>
+
+            <div class="size-container setting-container">
+                <label for="size">Size:</label>
+                <input type="range" name="size" id="size" class="range" min="1" max="90">
+            </div>
+
+            <div class="opacity-container setting-container">
+                <label for="opacity">Opacity:</label>
+                <input type="range" name="opacity" id="opacity" class="range" min="0" max="100">
+            </div>
+        </div>
+
+        <div class="image-editor big-setting-container">
+            <input type="checkbox" id="image" name="type" value="image">
+            <label for="image" class="setting-container checkbox-label">Add image</label>
+
+            <div class="image-container setting-container">
+                <label for="watermark-upload" class="select-watermark-btn btn" >SELECT WATERMARK</label>
+
+                <input type="file" id="watermark-upload" accept=".png, .jpg, .jpeg" onchange="getWatermark(this)"/>
+            </div>
+            <div class="size-container setting-container">
+                <label for="size">Size:</label>
+                <input type="range" name="size" id="size" class="range" min="1" max="90">
+            </div>
+
+            <div class="opacity-container setting-container">
+                <label for="opacity">Opacity:</label>
+                <input type="range" name="opacity" id="opacity" class="range" min="1" max="100">
+            </div>
+        </div>
+        <div class="tip">
+            <p>You can move the watermarks by clicking and dragging them</p>
+        </div>
+    </aside>
+
+    <div class="add-image container" id="add-image">
+        <div class="add-image-main">
+
+            <i class="fa-regular fa-image"></i>
+
+            <h1 class="add-image-title">ADD IMAGE TO GET STARTED</h1>
+
+            <label for="file-upload" class="add-image-btn btn">SELECT IMAGE</label>
+
+            <input type="file" id="file-upload" accept=".png, .jpg, .jpeg" onchange="getIMG(this)"/>
+        </div>
+    </div>
+
+    <div class="edit-image container" id="edit-image">
+        <div class="backdrop">
+            <img src="" alt="preview image" id="output">
+        </div>
+
+        <h2>Select different image?</h2>
+
+        <label for="file-upload" class="add-image-btn btn">SELECT IMAGE</label>
+        <input type="file" id="file-upload" accept=".png, .jpg, .jpeg" onchange="getIMG(this)"/>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+
+    <div class="edit-watermarks container" id="edit-watermarks">
+        <div class="photo" id="photo">
+            <div class="backdrop" id="backdrop">
+                <img src="" alt="preview image" id="real-img">
+                <div class="watermark" id="watermark-text-container" style="display: none;">
+                    <p id="watermark-text">Text goes here</p>
+                </div>
+                <div class="watermark" id="watermark-image-container" style="display: none;"">
+                    <img src="" alt="watermark-image" id="watermark-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
